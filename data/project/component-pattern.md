@@ -1,4 +1,10 @@
-# Project Shader Component Pattern
+# Project Shader Component Patterns
+
+## Two Rendering Approaches
+- **url**: file://src/Seed.Web/common/components/shaders/SHADERS.md
+- **techniques**: webgl, r3f, react-three-fiber, approach, decision
+- **domain**: glsl
+- **summary**: This project uses two shader approaches: (1) Raw WebGL via useWebGL hook — zero-dependency, lightweight, good for simple 2D background shaders (like NightSky). (2) React Three Fiber (R3F) — full 3D pipeline with Three.js, shaderMaterial/CSM, useFrame, postprocessing. Choose R3F when you need: 3D geometry, lighting/shadows, PBR materials, camera controls, instancing, or postprocessing. Choose raw WebGL when you need: minimal bundle size, simple 2D fragment-only effects, no Three.js dependency.
 
 ## Night Sky — Noise Stack
 - **url**: file://src/Seed.Web/common/components/shaders/nightSky/shaders/nightSky.frag.ts
