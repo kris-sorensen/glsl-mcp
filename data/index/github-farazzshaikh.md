@@ -83,3 +83,39 @@
 - **techniques**: path-tracing, gpu, global-illumination, raytracing, r3f
 - **domain**: threejs-r3f
 - **summary**: GPU path tracer for R3F. Renders physically accurate global illumination in the browser. Wraps three-gpu-pathtracer with React components. Use for high-quality renders, product visualization, and reference images.
+
+## Terrain-Builder — GPU Procedural Terrain
+- **url**: https://github.com/FarazzShaikh/Terrain-Builder
+- **techniques**: procedural-terrain, heightmap, perlin-noise, gpu, three-js, terrain-generation
+- **domain**: threejs-r3f
+- **summary**: GPU-accelerated procedural terrain generator using Three.js and Perlin noise. Generates heightmaps on the GPU for real-time results. Demonstrates noise-based terrain with adjustable resolution, downloadable heightmaps, and GPU compute for procedural geometry. 373 stars. Archived but patterns remain educational.
+
+## three-volumetric-clouds — Ray Marched Clouds
+- **url**: https://github.com/FarazzShaikh/three-volumetric-clouds
+- **techniques**: volumetric, ray-marching, clouds, perlin-worley, 3d-noise, adaptive-sampling, scattering, atmosphere
+- **domain**: threejs-r3f
+- **summary**: Volumetric cloud rendering in Three.js based on Guerrilla Games' "Nubis, Evolved". Implements envelope-based cloud modeling, 3D Perlin-Worley noise textures, ray marching with adaptive sampling, and a lighting model with multi-scattering and anisotropic phase functions. Advanced reference for volume rendering and atmospheric effects. 109 stars. Archived/experimental.
+
+## react-three-paper — Lightweight Three.js React Wrapper
+- **url**: https://github.com/FarazzShaikh/react-three-paper
+- **techniques**: react, three-js, lightweight, vanilla-js, position-aware, canvas
+- **domain**: threejs-r3f
+- **summary**: Paper-thin (~800 bytes) alternative to R3F for embedding Three.js in React. Wraps vanilla Three.js scripts with minimal overhead — no declarative syntax to learn. Position-aware: automatically pauses rendering when canvas is off-screen. Good for porting vanilla Three.js examples to React or when R3F's abstraction is overkill. 88 stars.
+
+## THREE-MultipassShaderHelper — Multi-Pass Shaders
+- **url**: https://github.com/FarazzShaikh/THREE-MultipassShaderHelper
+- **techniques**: multipass, render-target, feedback, ping-pong, buffer, fbo, shader-pipeline
+- **domain**: threejs-r3f
+- **summary**: Create multi-pass shaders in Three.js with inter-pass dependencies (like Shadertoy's BufferA/B pattern). Define passes with vertex/fragment shaders and uniforms that reference other passes via `MultipassShaderHelper.Dependency()`. Handles render targets and pass ordering automatically. Essential for feedback effects, blur chains, and GPU simulations.
+
+## ts-noise — CPU Noise Library
+- **url**: https://github.com/FarazzShaikh/ts-noise
+- **techniques**: noise, perlin, fbm, cpu, typescript, heightmap, procedural
+- **domain**: noise
+- **summary**: TypeScript CPU-side gradient noise library with fBm support. `new Perlin(seed)` then `perlin.get2(vec2)` / `perlin.get3(vec3)`. Also `new FBM(seed, options)` for fractal Brownian motion. Companion to glNoise (GPU) — use for generating noise data on CPU for heightmaps, textures, or uniform data that feeds into shaders. Formerly `three-noise`. 46 stars.
+
+## experiments — WebGL Demos Collection
+- **url**: https://github.com/FarazzShaikh/experiments
+- **techniques**: webgl, demos, creative-coding, shader-experiments, three-js
+- **domain**: threejs-r3f
+- **summary**: Centralized collection of FarazzShaikh's WebGL and creative coding demos. Reference implementations of various shader techniques from the same author as CSM and glNoise. Browse for real-world examples of noise, lighting, and material effects. 45 stars.
