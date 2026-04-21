@@ -24,6 +24,18 @@
 - **domain**: glsl
 - **summary**: Steps: (1) Create folder shaders/yourShader/, (2) Add .vert.ts (usually same passthrough), (3) Add .frag.ts with custom shader + uniforms, (4) Add types.ts with props interface, (5) Create React component importing useWebGL, (6) Add dev page under app/development/. GLSL stored as template literal strings. Compilation errors appear in browser console via gl.getShaderInfoLog().
 
+## Rain on Glass — BigWings Drop Technique with Finite-Difference Refraction
+- **url**: file://src/Seed.Web/common/components/shaders/rainWindow/shaders/rainWindow.frag.ts
+- **techniques**: rain, glass, refraction, finite-difference, normals, sawtooth, bigwings, heartfelt, drops, bokeh, lightning, fresnel, side-light, 3d-shading, trails, condensation
+- **domain**: glsl
+- **summary**: Rain-on-glass shader adapted from BigWings' Heartfelt/Drive Home Shadertoy techniques. Drop physics use SawTooth fall motion (accelerate+snap), continuous wet trails (smoothstep columns, not discrete dots), bottom-heavy shape via DeltaSawTooth, per-column grid shift. Refraction via finite-difference normals (3x drop cost, but accurate lens distortion). Bokeh is depth-layered fixed circles (8 close + 14 mid + 20 far) with bright rim and chromatic fringe. Glass fog simulates focus: foggy on dry glass, clear through drops. Noise-based organic lightning. Multi-scale condensation with fine-grain droplet texture and mouse wipe streaks.
+
+## Campfire — Simplex Noise Fire
+- **url**: file://src/Seed.Web/common/components/shaders/campfire/shaders/campfire.frag.ts
+- **techniques**: campfire, fire, simplex-noise, noise-stack, sparks, smoke, domain-displacement, flow
+- **domain**: glsl
+- **summary**: Procedural fire from Shadertoy port. Uses 3D simplex noise (Ashima Arts) with stacked octaves, domain displacement for flame shapes, flow vectors for entrainment/buoyancy, and grid-based spark system with lifecycle. 3-stop color ramp (outer→mid→core) via smoothstep. Mouse swirls noise coordinates via rotation with gaussian falloff.
+
 ## Dev Playground
 - **url**: file://src/Seed.Web/app/development/shader-play/client.tsx
 - **techniques**: development, testing, sliders, controls, playground

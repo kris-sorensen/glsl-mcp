@@ -59,3 +59,27 @@
 - **techniques**: pbr, physically-based, metallic, roughness, fresnel, cook-torrance, brdf
 - **domain**: lighting
 - **summary**: Physically-based rendering fundamentals: metallic-roughness workflow, Cook-Torrance BRDF (normal distribution D, geometry G, Fresnel F), energy conservation, and image-based lighting. External reference — use fetch_shader_article for full content.
+
+## Fresnel / Schlick Approximation
+- **url**: https://en.wikipedia.org/wiki/Schlick%27s_approximation
+- **techniques**: fresnel, schlick, glass, reflection, refraction, ior, grazing-angle, transmission
+- **domain**: lighting
+- **summary**: Schlick approximation for Fresnel reflectance: `R = R0 + (1-R0) * pow(1-cosTheta, 5)` where R0 = ((n1-n2)/(n1+n2))^2. For glass (IOR 1.5), R0 ≈ 0.04. At head-on: 4% reflected. At grazing: nearly 100% reflected. Use for glass windows, water surfaces, wet materials. cosTheta = dot(viewDir, normal) or approximated by distance from screen center for 2D shaders.
+
+## DUDV Refraction / Displacement Maps
+- **url**: https://www.youtube.com/watch?v=6B7IF6GOu7s
+- **techniques**: dudv, refraction, displacement, water, glass, distortion, wave
+- **domain**: lighting
+- **summary**: DUDV map technique for water/glass refraction: sample a displacement texture's RG channels to get 2D offset vectors, apply to UV before sampling the scene. Double-sampling (sample DUDV twice with time-scrolled UVs) creates layered organic distortion. Key formula: `distortedUv = vUv + texture(dudv, scrolledUv).rg * strength; finalUv = vUv + (texture(dudv, distortedUv).rg * 2.0 - 1.0) * strength`. Used in htct-refraction and htct-reflective-ground training projects.
+
+## Transmission Blending (Glass/Water)
+- **url**: https://learnopengl.com/PBR/Theory
+- **techniques**: transmission, glass, water, transparency, blend, refraction
+- **domain**: lighting
+- **summary**: Transmission controls how much light passes through a material vs reflects. `finalColor = mix(reflectionColor, refractionColor, transmission)`. For glass: transmission ~0.9-1.0 with Fresnel-modulated blend. Three.js MeshPhysicalMaterial uses: transmission (0-1), thickness (ray depth), ior (1.0-2.33), roughness. In 2D shaders: approximate by blending between refracted UV sample and reflected color based on Fresnel term.
+
+## SDF Drop Refraction (Rain on Glass)
+- **url**: file://src/Seed.Web/common/components/shaders/rainWindow/shaders/rainWindow.frag.ts
+- **techniques**: rain, refraction, sdf, hemisphere, drop, lens, normal, glass, bokeh
+- **domain**: lighting
+- **summary**: Technique for realistic rain-on-glass refraction. Each raindrop is an SDF hemisphere. The surface normal at any point = delta/radius (offset from center normalized by radius). This normal directly becomes a UV offset applied to the background texture/procedural sampling. Drops act as tiny lenses — background bokeh lights shift and distort through each drop. For 3D shading: reconstruct full normal as vec3(normal2D, sqrt(1 - dot(n2d,n2d)*0.5)), then apply standard diffuse+specular from a side light source.
